@@ -19,7 +19,7 @@ export default function HomeHeader() {
       <Button onPress={() => alert("Your Papa")}>
         <Ionicons
           name="notifications-outline"
-          size={24}
+          size={20}
           color="whitesmoke"
           className="text-[whitesmoke]"
         />

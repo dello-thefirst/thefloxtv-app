@@ -34,10 +34,10 @@ const SecondaryList = () => {
   return (
     <View className="w-screen mb-6">
       <View className="w-full flex flex-row justify-between px-5 items-center mb-2">
-        <AppText className="w-full text-[#a9a9a9] text-[17px] font-[500] text-center">
-          <FontAwesome5 name="fire" size={17} color="white" />
+        <AppText className="w-full text-[#a9a9a9] text-[14px] font-[500] text-center">
+          <FontAwesome5 name="fire" size={14} color="white" />
           {"  "}Trending This Week{"  "}
-          <FontAwesome5 name="fire" size={17} color="white" />
+          <FontAwesome5 name="fire" size={14} color="white" />
         </AppText>
       </View>
       <FlatList

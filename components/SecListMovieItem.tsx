@@ -26,7 +26,7 @@ const SecListMovieItem = ({ item }: { item?: any }) => {
   }, [item]);
   return (
     <View className="w-[85vw] h-auto py-2 mr-3">
-      <View className="w-full h-[170] rounded-2xl overflow-hidden">
+      <View className="w-full h-[160] rounded-2xl overflow-hidden">
         <ImageBackground
           className="w-full h-full"
           source={{
@@ -38,7 +38,7 @@ const SecListMovieItem = ({ item }: { item?: any }) => {
             colors={["transparent", "rgba(20,20,23,0.9)"]}
             start={[1.0, 0.1]}
           >
-            <AppText className="text-[#90ee90] text-[15px]">
+            <AppText className="text-[#90ee90] text-[13px]">
               {item.media_type == "movie"
                 ? `Movie  ${"\u00B7"}  ${getLetterRange(item.release_date, 4)}`
                 : `Tv Show  ${"\u00B7"}  ${getLetterRange(
@@ -46,7 +46,7 @@ const SecListMovieItem = ({ item }: { item?: any }) => {
                     4
                   )}`}
             </AppText>
-            <AppText className="text-[#d7d5d5] text-[25px] font-bold">
+            <AppText className="text-[#d7d5d5] text-[20px] font-bold">
               {item.media_type == "movie"
                 ? getWordRange(item.title, 4)
                 : getWordRange(item.name, 4)}

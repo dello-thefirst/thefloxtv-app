@@ -20,6 +20,8 @@ export default function AppText({
     return undefined;
   }
   return (
-    <Text style={[{ fontFamily: "Lato-Regular" }, style]}>{children}</Text>
+    <Text style={[{ fontFamily: "Lato-Regular", fontSize: 11 }, style]}>
+      {children}
+    </Text>
   );
 }

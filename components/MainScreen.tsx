@@ -59,26 +59,26 @@ const renderItem = ({ item }: { item: MovieProps }) => (
     />
     <View className="w-full absolute z-[30] bottom-0 px-5 overflow-hidden flex items-center flex-col">
       <MovieLogo
-        className="movie-logo w-[150] h-[80] mb-[20]"
+        className="movie-logo w-[150] h-[80] mb-[5]"
         movieId={item.id}
         movieTitle={item.media_type == "movie" ? item.title : item.name}
         mediaType={item.media_type}
       />
       <View className="w-auto flex-row items-center flex gap-5 mb-[10]">
-        <AppText className="text-white text-[18px]">
+        <AppText className="text-white text-[13px]">
           {item.media_type == "movie"
             ? getLetterRange(item.release_date, 4)
             : getLetterRange(item.first_air_date, 4)}
         </AppText>
-        <View className="hd-btn w-[35] h-[20] flex flex-row justify-center items-center border border-white rounded-2xl">
-          <AppText className="text-white text-[11px]">HD</AppText>
+        <View className="hd-btn w-[33] h-[17] flex flex-row justify-center items-center border border-white rounded-2xl">
+          <AppText className="text-white text-[10px]">HD</AppText>
         </View>
-        <AppText className="text-white text-[18px] text">
-          <Feather name="star" size={18} color="gold" />{" "}
+        <AppText className="text-white text-[13px] text">
+          <Feather name="star" size={13} color="gold" />{" "}
           {item.vote_average.toFixed(1)}
         </AppText>
       </View>
-      <AppText className="text-[#c5c5c5] text-[13px] px-[20] mb-[20] text-center">
+      <AppText className="text-[#c5c5c5] text-[12px] px-[20] mb-[20] text-center">
         Action {"  "} Thriller {"   "} Drama
       </AppText>
       <View className="btn-cont mb-[30] flex flex-row gap-[10]">
@@ -90,16 +90,16 @@ const renderItem = ({ item }: { item: MovieProps }) => (
                 : `/tv/${item.id}`
             )
           }
-          className="watch-btn w-[120] h-[45] bg-[#e8e8e8] rounded-3xl"
+          className="watch-btn w-[120] h-[40] bg-[#e8e8e8] rounded-3xl"
           contentStyle={{ height: "100%" }}
         >
-          <AppText className="text-[15px] text-[#000]">
-            <AntDesign name="play" size={16} color="black" /> Watch
+          <AppText className="text-[12px] text-[#000]">
+            <AntDesign name="play" size={11} color="black" /> Watch
           </AppText>
         </Button>
-        <TouchableOpacity className="watch-btn w-[120] h-[45] bg-transparent rounded-3xl flex flex-row justify-center items-center">
-          <AppText className="text-[15px] text-[#f5f5f5]">
-            <Feather name="bookmark" size={16} color="#f5f5f5" /> Bookmark
+        <TouchableOpacity className="watch-btn w-[120] h-[40] bg-transparent rounded-3xl flex flex-row justify-center items-center">
+          <AppText className="text-[12px] text-[#f5f5f5]">
+            <Feather name="bookmark" size={11} color="#f5f5f5" /> Bookmark
           </AppText>
         </TouchableOpacity>
       </View>
@@ -110,6 +110,7 @@ const renderItem = ({ item }: { item: MovieProps }) => (
 const { width: screenWidth } = Dimensions.get("window");
 
 export default function MainScreen() {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { data: fetchData, isLoading } = useQuery({
     queryKey: ["trending", 35],
     queryFn: () => fetchTrending("day"),
@@ -117,10 +118,7 @@ export default function MainScreen() {
 
   const DATA = isLoading ? {} : fetchData.results;
   const flatlistRef = useRef<FlatList>(null);
-
-  useEffect(() => {
-    flatlistRef?.current?.scrollToEnd({ animated: true });
-  }, []);
+  let it = 0;
 
   if (isLoading) {
     return <Text>Loading</Text>;
