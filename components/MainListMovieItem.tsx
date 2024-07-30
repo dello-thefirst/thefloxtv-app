@@ -27,7 +27,7 @@ const MainListMovieItem = ({
           : "/"
       }
     >
-      <View className="w-auto h-[240] relative flex flex-row">
+      <View className="w-auto h-[250] relative flex flex-row">
         <View
           className="w-auto h-full flex items-center justify-center"
           style={{ transform: [{ translateX: 10 }] }}
@@ -37,7 +37,7 @@ const MainListMovieItem = ({
           </Text>
         </View>
         <ImageBackground
-          className="w-[170] h-[240] rounded-md overflow-hidden"
+          className="w-[160] h-[250] rounded-md overflow-hidden"
           source={{
             uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
           }}

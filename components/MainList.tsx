@@ -18,10 +18,11 @@ import type { MovieProps } from "./MainScreen";
 import { Link } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import MainListMovieItem from "./MainListMovieItem";
+import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 
 export default function MainList({ listCat }: { listCat?: string }) {
   const { data: fetchData, isLoading } = useQuery({
-    queryKey: [listCat, 20, "ggcjyffvvvff"],
+    queryKey: [listCat, 20, "ggcjyffvvvnjcff"],
     queryFn: () =>
       listCat == "trending"
         ? fetchTrending("day")
@@ -46,10 +47,20 @@ export default function MainList({ listCat }: { listCat?: string }) {
     : fetchData.results.slice(0, 10);
   return (
     <View className="w-full mb-6">
-      <View className="w-full flex flex-row justify-between px-5 items-center mb-2">
-        <AppText className="text-[#e0e0e0] text-[20px] font-[700]">
-          {listCat == "trending" && <Text>Today's top picks</Text>}
-          {listCat == "popular-movies" && <Text>Top Rated Movies</Text>}
+      <View className="w-full flex flex-row justify-between px-5 items-center mb-4">
+        <AppText className="w-full text-[#a9a9a9] text-[16px] font-[600]">
+          {listCat == "trending" && (
+            <Text>
+              Today's top picks{" "}
+              <AntDesign name="clockcircleo" size={12} color="lightgreen" />
+            </Text>
+          )}
+          {listCat == "popular-movies" && (
+            <Text>
+              Top Rated Movies{" "}
+              <AntDesign name="staro" size={13} color="lightgreen" />
+            </Text>
+          )}
           {listCat == "popular-series" && <Text>Top Rated Tv Shows</Text>}
         </AppText>
       </View>
